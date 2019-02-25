@@ -15,7 +15,7 @@ phases:
     commands:
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
- rtifacts:
+ artifacts:
   files:
     - target/*.jar
   discard-paths: yes
