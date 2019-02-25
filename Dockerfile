@@ -1,6 +1,6 @@
 FROM fedora:29
 
-RUN dnf install -y java aws
+RUN dnf install -y java
 
 RUN mkdir /app
 ADD target/*.jar /app
