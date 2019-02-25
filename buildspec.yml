@@ -1,20 +1,12 @@
 version: 0.2
 
 phases:
-  pre_build:
-    commands:
-      - $(aws ecr get-login --region us-east-1 --no-include-email)
-      - REPOSITORY_URI=714436819625.dkr.ecr.us-east-1.amazonaws.com/hekonsek-test
-      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
     commands:
-      - mvn test package
-      - buildah build -t $REPOSITORY_URI:latest .
-      - buildah tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+      - mvn test
   post_build:
     commands:
-      - buildah push $REPOSITORY_URI:latest
-      - buildah push $REPOSITORY_URI:$IMAGE_TAG
+      - mvn package
 artifacts:
   files:
     - target/*.jar
