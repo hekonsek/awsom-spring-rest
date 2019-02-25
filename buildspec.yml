@@ -9,5 +9,6 @@ phases:
       - mvn package
 artifacts:
   files:
+    - buildspec-docker.yml
     - target/*.jar
   discard-paths: yes
