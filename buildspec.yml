@@ -3,12 +3,10 @@ version: 0.2
 phases:
   build:
     commands:
-      - mvn test
-  post_build:
-    commands:
-      - mvn package
+      - mvn test package
 artifacts:
   files:
     - buildspec-docker.yml
+    - Dockerfile
     - target/*.jar
   discard-paths: yes
