@@ -9,4 +9,3 @@ artifacts:
     - buildspec-docker.yml
     - Dockerfile
     - target/*.jar
-  discard-paths: yes
