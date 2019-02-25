@@ -1,15 +1,21 @@
 version: 0.2
 
 phases:
+  pre_build:
+    commands:
+      - $(aws ecr get-login --region us-east-1 --no-include-email)
+      - REPOSITORY_URI=714436819625.dkr.ecr.us-east-1.amazonaws.com/hekonsek-test
+      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
     commands:
-      - echo Build started on `date`
-      - mvn test
+      - mvn test package
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
-      - echo Build completed on `date`
-      - mvn package
-artifacts:
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+ rtifacts:
   files:
     - target/*.jar
   discard-paths: yes
