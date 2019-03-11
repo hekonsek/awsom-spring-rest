@@ -3,7 +3,6 @@ version: 0.2
 phases:
   build:
     commands:
-      - env
       - mvn test package
 artifacts:
   files:
