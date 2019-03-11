@@ -3,7 +3,8 @@ version: 0.2
 phases:
   build:
     commands:
-      - mvn test package
+      - cp /usr/bin/awsom awsom
+      - ./awsom step clone --app foo
 artifacts:
   files:
     - "**/*"
