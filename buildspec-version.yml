@@ -4,8 +4,8 @@ phases:
   build:
     commands:
       - cp /usr/bin/awsom awsom
-      - ./awsom step clone --app fooo2
-      - ./awsom step version --app fooo2
+      - ./awsom step clone --app fooo3
+      - ./awsom step version --app fooo3
 artifacts:
   files:
     - "**/*"
