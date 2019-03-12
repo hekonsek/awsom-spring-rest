@@ -4,12 +4,12 @@ phases:
   pre_build:
     commands:
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-      - REPOSITORY_URI=$(./awsom step ecr)
-      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
+      - REPOSITORY=`./awsom step ecr`
+      - VERSION=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
     commands:
-      - docker build -t $REPOSITORY_URI:$IMAGE_TAG .
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker build -t $REPOSITORY:$VERSION .
+      - docker push $REPOSITORY:$VERSION
 artifacts:
   files:
     - imageDetail.json
