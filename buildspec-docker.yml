@@ -4,7 +4,7 @@ phases:
   pre_build:
     commands:
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-      - REPOSITORY_URI=714436819625.dkr.ecr.us-east-1.amazonaws.com/hekonsek-test
+      - REPOSITORY_URI=`./awsom step ecr`
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
     commands:
