@@ -1,4 +1,4 @@
-# Spring Boot REST application with Prometheus support (Java 11)
+# Spring Boot REST application with Prometheus support (Java 11) 
 
 This is a template application for Spring Boot REST application instrumented to
 expose Prometheus metrics. This quickstart uses Java 11.
