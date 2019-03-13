@@ -4,9 +4,8 @@ phases:
   build:
     commands:
       - cp /usr/bin/awsom awsom
-      - "export APP_NAME=`echo $CODEBUILD_BUILD_ID | awk -F : '{print $1}' | awk -F '-' '{print $1}'`"
-      - ./awsom step clone --app $APP_NAME
-      - ./awsom step version --app $APP_NAME
+      - ./awsom step clone
+      - ./awsom step version
 artifacts:
   files:
     - "**/*"
